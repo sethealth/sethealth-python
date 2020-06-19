@@ -12,7 +12,7 @@ class TestAPI(unittest.TestCase):
         self.assertGreater(len(token), 10)
 
     def test_unvalid(self):
-        with self.assertRaises(sethealth.AuthError):
+        with self.assertRaises(sethealth.AuthException):
             client = sethealth.Client("", "")
             client.getToken()
 

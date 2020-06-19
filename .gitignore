@@ -1,0 +1,6 @@
+.tox
+.vscode
+.flake8
+dist
+venv
+sethealth.egg-info

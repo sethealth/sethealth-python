@@ -2,6 +2,7 @@ import unittest
 import sethealth
 import os
 
+
 class TestAPI(unittest.TestCase):
     def test_valid(self):
         client = sethealth.Client(

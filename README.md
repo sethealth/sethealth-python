@@ -24,3 +24,14 @@ client = sethealth.Client(apiKey, apiSecret)
 token = client.getToken()
 print("ACCESS TOKEN: " + token)
 ```
+
+
+## Release
+
+1. Update version in setup.py
+2. Commit all changes
+3. Run `make release`
+4. Create git tag vX.X.X
+5. Create commit with the following name `X.X.X`
+6. Run `git push origin`
+7. Run `gin push --tags`

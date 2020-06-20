@@ -13,7 +13,7 @@ $(VENV_NAME)/bin/activate: setup.py
 build: venv
 	python setup.py sdist bdist_wheel
 
-release: clean build 
+release: clean fmtcheck lint test build 
 	twine upload dist/*
 
 test: venv

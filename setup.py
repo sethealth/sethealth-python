@@ -3,12 +3,13 @@ from setuptools import setup
 setup(
     name="sethealth",
     packages=["sethealth"],  # this must be the same as the name above
-    version="1.1.2",
+    use_scm_version=True,
     description="Backend for sethealth authentication in python.",
     author="Pablo Eliseo",
     author_email="pabloeliseo@set.health",
     url="https://github.com/sethealth/py-client",
     keywords=["API", "authentication", "sethealth"],
+    setup_requires=['setuptools_scm'],
     install_requires=["requests"],
     classifiers=[
         "Programming Language :: Python :: 3.3",

@@ -11,6 +11,7 @@ This "long-living" credentials can be used instead to create short-living creden
 ```
 pip install --upgrade sethealth
 ```
+If you have permission problems try adding "--user" option to pip.
 
 ## Usage
 

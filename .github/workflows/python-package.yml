@@ -6,33 +6,35 @@ name: Python package
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.6, 3.7, 3.8]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python 3.7
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.7
+
     - name: Install dependencies
       run: make
-    - name: Check formatt
+
+    - name: Check format
       run: make fmtcheck
+
     - name: Lint
       run: make lint
+
     - name: Test
       run: make test
       env: 
         SETHEALTH_KEY: ${{ secrets.SETHEALTH_KEY }}
         SETHEALTH_SECRET: ${{ secrets.SETHEALTH_SECRET }}
-    - name: Build
-      run: make build
+
+    - name: Build & release
+      run: make release
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

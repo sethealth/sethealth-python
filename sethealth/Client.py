@@ -24,18 +24,15 @@ class Client:
         to be used by client side"""
 
         try:
-            payload = {
-                "key": self.key,
-                "secret": self.secret,
-            }
-            if 'test-mode' in kwargs:
-                payload['test-mode'] = kwargs.test_mode
+            payload = {"key": self.key, "secret": self.secret}
+            if "test-mode" in kwargs:
+                payload["test-mode"] = kwargs.test_mode
 
-            if 'expires-in' in kwargs:
-                payload['expires-in'] = kwargs.expires_in
+            if "expires-in" in kwargs:
+                payload["expires-in"] = kwargs.expires_in
 
-            if 'user-id' in kwargs:
-                payload['user-id'] = kwargs.user_id
+            if "user-id" in kwargs:
+                payload["user-id"] = kwargs.user_id
 
             response = requests.post(
                 url="https://api.set.health/token",

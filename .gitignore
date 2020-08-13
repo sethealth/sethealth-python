@@ -1,6 +1,5 @@
 .tox
 .vscode
-.flake8
 .eggs
 dist
 venv

@@ -7,7 +7,7 @@ setup(
     description="Backend for sethealth authentication in python.",
     author="Sethealth team",
     author_email="team@set.health",
-    url="https://github.com/sethealth/py-client",
+    url="https://github.com/sethealth/sethealth-py",
     keywords=["API", "authentication", "sethealth"],
     install_requires=["requests"],
     classifiers=[

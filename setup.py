@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name="sethealth",
     packages=["sethealth"],  # this must be the same as the name above
-    version="1.6.0",
+    version="1.7.0",
     description="Backend for sethealth authentication in python.",
     author="Sethealth team",
     author_email="team@set.health",

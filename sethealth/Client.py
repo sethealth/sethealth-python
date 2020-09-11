@@ -24,7 +24,7 @@ class Client:
         to be used by client side"""
 
         try:
-            payload = {"key": self.key, "secret": self.secret}
+            payload = {"id": self.key, "secret": self.secret}
             if "test-mode" in kwargs:
                 payload["test-mode"] = kwargs.test_mode
 

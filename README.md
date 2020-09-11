@@ -20,8 +20,8 @@ Get your service account credentials from the [Sethealth Dashboard](https://dash
 **.bashrc/.zshrc:***
 
 ```bash
-export SETHEALTH_KEY="0000000000000"
-export SETHEALTH_SECRET="r_xxxxxxxxxxxxxxxxxxxxxxxxxxxx="
+export SETHEALTH_KEY="sa_0000000000000"
+export SETHEALTH_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx="
 ```
 
 **__init__.py:***

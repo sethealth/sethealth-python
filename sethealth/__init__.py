@@ -1,1 +1,1 @@
-from .Client import Client, AuthException  # noqa: F401
+from .Client import Client, AuthException, InputException  # noqa: F401

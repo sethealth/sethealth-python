@@ -18,6 +18,7 @@ release: clean fmtcheck lint test build
 
 test: venv
 	@${VENV_NAME}/bin/tox -p auto $(TOX_ARGS)
+	@${VENV_NAME}/bin/tox -e noenvs
 
 fmt: venv
 	@${VENV_NAME}/bin/tox -e fmt

@@ -18,6 +18,14 @@ class TestAPI(unittest.TestCase):
             client = sethealth.Client("", "")
             client.getToken()
 
+    def test_missing_key(self):
+        with self.assertRaises(sethealth.InputException):
+            sethealth.Client(None, "Secret")
+
+    def test_missing_secret(self):
+        with self.assertRaises(sethealth.InputException):
+            sethealth.Client("Key", None)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -21,13 +21,17 @@ class Client:
     """Client exposes the public api for sethealth"""
 
     def __init__(
-        self, key=os.environ.get("SETHEALTH_KEY"), secret=os.environ.get("SETHEALTH_SECRET")
+        self,
+        key=os.environ.get("SETHEALTH_KEY"),
+        secret=os.environ.get("SETHEALTH_SECRET"),
     ):
         print("key", key)
         if key is None:
             raise InputException("Service Account Key is missing (check SETHEALTH_KEY)")
         if secret is None:
-            raise InputException("Service Account Secret is missing (check SETHEALTH_SECRET)")
+            raise InputException(
+                "Service Account Secret is missing (check SETHEALTH_SECRET)"
+            )
 
         self.key = key
         self.secret = secret

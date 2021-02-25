@@ -1,35 +1,36 @@
-  
-VENV_NAME?=venv
 
-venv: $(VENV_NAME)/bin/activate
-
-$(VENV_NAME)/bin/activate: setup.py
-	pip install --upgrade pip virtualenv setuptools wheel twine
-	@test -d $(VENV_NAME) || python -m virtualenv --clear $(VENV_NAME)
-	${VENV_NAME}/bin/python -m pip install -U pip tox
-	${VENV_NAME}/bin/python -m pip install -e .
-	@touch $(VENV_NAME)/bin/activate
+venv:
+	pipenv sync --dev --pre --bare
 
 build: venv
-	python setup.py sdist bdist_wheel
+	pipenv run pipenv-setup sync
+	pipenv run python setup.py sdist bdist_wheel
 
-release: clean fmtcheck lint test build 
-	twine upload dist/*
+release: clean fmt-check dependencies-check lint test build
+	pipenv run twine upload dist/*
 
 test: venv
-	@${VENV_NAME}/bin/tox -p auto $(TOX_ARGS)
-	@${VENV_NAME}/bin/tox -e noenvs
+	pipenv run python -m tox -p auto
+	pipenv run python -m tox -e noenvs
 
 fmt: venv
-	@${VENV_NAME}/bin/tox -e fmt
+	pipenv run python -m tox -e fmt
 
-fmtcheck: venv
-	@${VENV_NAME}/bin/tox -e fmt -- --check --verbose
+fmt-check: venv
+	pipenv run python -m tox -e fmt -- --check --verbose
+
+dependencies: venv
+	pipenv run pipenv-setup sync --dev
+
+dependencies-check: venv
+	pipenv run pipenv-setup check
 
 lint: venv
-	@${VENV_NAME}/bin/tox -e lint
+	pipenv run python -m tox -e lint
 
 clean:
-	@rm -rf $(VENV_NAME) dist/
+	rm -rf dist/ build/
+	pipenv --venv | xargs rm -rf
+
 
 .PHONY: venv test ci coveralls fmt fmtcheck lint clean
